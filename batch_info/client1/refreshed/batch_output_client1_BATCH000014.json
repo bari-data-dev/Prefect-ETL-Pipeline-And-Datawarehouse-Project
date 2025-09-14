@@ -1,0 +1,78 @@
+{
+  "client_schema": "client1",
+  "client_id": 2,
+  "batch_id": "BATCH000014",
+  "files": [
+    {
+      "physical_file_name": "cust_info_BATCH000014.csv",
+      "logical_source_file": "cust_info",
+      "source_system": "crm",
+      "source_type": "csv",
+      "target_schema": "bronze_client1",
+      "target_table": "crm_cust_info",
+      "source_config": null,
+      "parquet_name": "cust_info_BATCH000014.parquet"
+    },
+    {
+      "physical_file_name": "prd_info_BATCH000014.csv",
+      "logical_source_file": "prd_info",
+      "source_system": "crm",
+      "source_type": "csv",
+      "target_schema": "bronze_client1",
+      "target_table": "crm_prd_info",
+      "source_config": null,
+      "parquet_name": "prd_info_BATCH000014.parquet"
+    },
+    {
+      "physical_file_name": "sales_details_BATCH000014.csv",
+      "logical_source_file": "sales_details",
+      "source_system": "crm",
+      "source_type": "csv",
+      "target_schema": "bronze_client1",
+      "target_table": "crm_sales_details",
+      "source_config": null,
+      "parquet_name": "sales_details_BATCH000014.parquet"
+    },
+    {
+      "physical_file_name": "CUST_AZ12_BATCH000014.csv",
+      "logical_source_file": "CUST_AZ12",
+      "source_system": "erp",
+      "source_type": "csv",
+      "target_schema": "bronze_client1",
+      "target_table": "erp_cust_az12",
+      "source_config": null,
+      "parquet_name": "CUST_AZ12_BATCH000014.parquet"
+    },
+    {
+      "physical_file_name": "LOC_A101_BATCH000014.csv",
+      "logical_source_file": "LOC_A101",
+      "source_system": "erp",
+      "source_type": "csv",
+      "target_schema": "bronze_client1",
+      "target_table": "erp_loc_a101",
+      "source_config": null,
+      "parquet_name": "LOC_A101_BATCH000014.parquet"
+    },
+    {
+      "physical_file_name": "PX_CAT_G1V2_BATCH000014.csv",
+      "logical_source_file": "PX_CAT_G1V2",
+      "source_system": "erp",
+      "source_type": "csv",
+      "target_schema": "bronze_client1",
+      "target_table": "erp_px_cat_g1v2",
+      "source_config": null,
+      "parquet_name": "PX_CAT_G1V2_BATCH000014.parquet"
+    }
+  ],
+  "transformation_procedure": [
+    "tools.load_crm_cust_info_v1"
+  ],
+  "integration_procedure": [
+    "tools.load_dim_customers_v1",
+    "tools.load_dim_products_v1",
+    "tools.load_fact_sales_v1"
+  ],
+  "refresh_procedure": [
+    "mv_customer_lifetime_value"
+  ]
+}
